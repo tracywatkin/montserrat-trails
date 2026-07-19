@@ -45,8 +45,8 @@ const TRAILS = [
     terrain_type: "Path, gentle climb",
     description:
       "Short, family-friendly climb to an 11th-century Romanesque watchtower with sweeping views of the Montserrat massif. The easiest hike on the list.",
-    start_lat: HOME_LAT,
-    start_lng: HOME_LNG,
+    start_lat: 41.6100137,
+    start_lng: 1.9076787,
   },
   {
     id: "2",
@@ -59,8 +59,8 @@ const TRAILS = [
     terrain_type: "Vineyard paths",
     description:
       "A gentle path through vineyards to a 14th-century hermitage. More about the scenery and history than the climb.",
-    start_lat: HOME_LAT,
-    start_lng: HOME_LNG,
+    start_lat: 41.6186526,
+    start_lng: 1.8575418,
   },
   {
     id: "3",
@@ -73,8 +73,8 @@ const TRAILS = [
     terrain_type: "Ridge trail",
     description:
       "A key crossroads on the Serra del Cul de la Portadora ridge, with a hidden spring nearby and connections toward Turó de la Socarrada.",
-    start_lat: HOME_LAT,
-    start_lng: HOME_LNG,
+    start_lat: 41.5894463,
+    start_lng: 1.8711916,
   },
   {
     id: "4",
@@ -87,8 +87,8 @@ const TRAILS = [
     terrain_type: "Rocky ridge",
     description:
       "Highest point of the Serra de l'Hospici at 519m, reached via a short detour off the main ridge path. Strong panoramic reward for the climb.",
-    start_lat: HOME_LAT,
-    start_lng: HOME_LNG,
+    start_lat: 41.5855104,
+    start_lng: 1.873761,
   },
   {
     id: "5",
@@ -101,21 +101,8 @@ const TRAILS = [
     terrain_type: "Forest, summit",
     description:
       "A 396m summit on the Vacarisses/Esparreguera border. The 'Era de les Bruixes' spot has a slightly eerie, magical feel — worth timing for golden hour.",
-    start_lat: HOME_LAT,
-    start_lng: HOME_LNG,
-  },
-  {
-    id: "6",
-    name: "The riverbed of Monistrol de Montserrat",
-    distance_km: 6,
-    elevation_gain_m: 100,
-    difficulty: "Easy",
-    duration_hours: 2,
-    best_season: "Year-round (check water levels after rain)",
-    terrain_type: "Riverbed, flat",
-    description: "A local riverbed walk near Monistrol — flat, shaded, and a nice low-effort option.",
-    start_lat: HOME_LAT,
-    start_lng: HOME_LNG,
+    start_lat: 41.5803666,
+    start_lng: 1.8657205,
   },
   {
     id: "7",
@@ -128,8 +115,8 @@ const TRAILS = [
     terrain_type: "Mountain, steep",
     description:
       "A demanding full-day route to a historic hermitage, passing through Coll de les Bruixes and the Serra de l'Hospici. Not suitable for kids or casual hikers.",
-    start_lat: HOME_LAT,
-    start_lng: HOME_LNG,
+    start_lat: 41.5789797,
+    start_lng: 1.8842971,
   },
 ];
 
