@@ -20,7 +20,7 @@ export default function Home() {
         <div className="container relative z-20 px-4 md:px-6 text-center max-w-4xl mx-auto flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-6">
             <Mountain className="mr-2 h-4 w-4" />
-            <span>The Serrated Mountain Guide</span>
+            <span>A guide to trails around Montserrat (Vacarisses)</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold tracking-tight text-foreground mb-6 leading-tight">
             Discover the magic of <span className="text-primary">Montserrat</span>.
