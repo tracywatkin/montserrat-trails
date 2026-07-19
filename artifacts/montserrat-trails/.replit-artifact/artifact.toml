@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Montserrat Trails"
+version = "1.0.0"
+id = "artifacts/montserrat-trails"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26227
+
+[services.development]
+run = "pnpm --filter @workspace/montserrat-trails run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/montserrat-trails", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/montserrat-trails/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26227"
+BASE_PATH = "/"

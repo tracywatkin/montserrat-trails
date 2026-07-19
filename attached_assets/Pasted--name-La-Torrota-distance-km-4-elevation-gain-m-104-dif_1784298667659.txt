@@ -1,0 +1,79 @@
+[
+  {
+    "name": "La Torrota",
+    "distance_km": 4,
+    "elevation_gain_m": 104,
+    "difficulty": "Easy",
+    "duration_hours": 1.2,
+    "best_season": "Year-round",
+    "starts_from_home": true,
+    "description": "Short, family-friendly climb to an 11th-century Romanesque watchtower with sweeping views of the Montserrat massif. The easiest hike on the list — great for a quick loop or with kids.",
+    "confidence": "confirmed (standard route stats from Vacarisses center, adjust slightly for your exact starting point)"
+  },
+  {
+    "name": "Ermita de Sant Antolí",
+    "distance_km": 5,
+    "elevation_gain_m": 150,
+    "difficulty": "Easy-Moderate",
+    "duration_hours": 1.5,
+    "best_season": "Spring, Autumn",
+    "starts_from_home": true,
+    "description": "A gentle path through vineyards to a 14th-century hermitage. More about the scenery and history than the climb.",
+    "confidence": "estimated — published routes measure from Monistrol station, not your house; verify distance/time"
+  },
+  {
+    "name": "Coll de les Bruixes",
+    "distance_km": 7,
+    "elevation_gain_m": 350,
+    "difficulty": "Moderate",
+    "duration_hours": 2.5,
+    "best_season": "Spring, Autumn",
+    "starts_from_home": true,
+    "description": "A key crossroads on the Serra del Cul de la Portadora ridge, with a hidden spring (Font de la Reixa) nearby and connections toward Turó de la Socarrada.",
+    "confidence": "estimated — based on regional route segments, adjust for your house starting point"
+  },
+  {
+    "name": "Turó de la Socarrada",
+    "distance_km": 8,
+    "elevation_gain_m": 450,
+    "difficulty": "Moderate-Hard",
+    "duration_hours": 3,
+    "best_season": "Spring, Autumn",
+    "starts_from_home": true,
+    "description": "Highest point of the Serra de l'Hospici at 519m, reached via a short detour off the main ridge path. Strong panoramic reward for the climb.",
+    "confidence": "estimated — verify against your own timing"
+  },
+  {
+    "name": "Pla de les Bruixes",
+    "distance_km": 7,
+    "elevation_gain_m": 300,
+    "difficulty": "Moderate",
+    "duration_hours": 2.5,
+    "best_season": "Year-round, especially atmospheric at sunset",
+    "starts_from_home": true,
+    "description": "A 396m summit on the Vacarisses/Esparreguera border. The 'Era de les Bruixes' spot has a slightly eerie, magical feel — worth timing for golden hour.",
+    "confidence": "estimated"
+  },
+  {
+    "name": "The riverbed of Monistrol de Montserrat",
+    "distance_km": 6,
+    "elevation_gain_m": 100,
+    "difficulty": "Easy",
+    "duration_hours": 2,
+    "best_season": "Year-round (check water levels after rain)",
+    "starts_from_home": true,
+    "description": "A local riverbed walk near Monistrol — flat, shaded, and a nice low-effort option.",
+    "confidence": "unverified — no published route found; please fill in real distance/time/notes"
+  },
+  {
+    "name": "Sant Salvador de les Espases",
+    "distance_km": 16.5,
+    "elevation_gain_m": 800,
+    "difficulty": "Hard",
+    "duration_hours": 5.5,
+    "best_season": "Spring, Autumn",
+    "starts_from_home": true,
+    "description": "A demanding full-day route to a historic hermitage, passing through Coll de les Bruixes and the Serra de l'Hospici. Not suitable for kids or casual hikers.",
+    "confidence": "confirmed distance for the full published circuit — likely shorter from your house depending on route taken; consider noting a shorter alternative option, as local guides mention one"
+  }
+]

@@ -3,20 +3,22 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Montserrat Trails API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: trails
+    description: Trail operations
+
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +26,94 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /trails:
+    get:
+      operationId: listTrails
+      tags: [trails]
+      summary: List curated trails with optional filters
+      parameters:
+        - name: difficulty
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: min_duration_hours
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: max_duration_hours
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: terrain_type
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of curated trails
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Trail"
+
+  /trails/community:
+    get:
+      operationId: listCommunityTrails
+      tags: [trails]
+      summary: List community-submitted trails
+      responses:
+        "200":
+          description: List of community trails
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Trail"
+    post:
+      operationId: submitTrail
+      tags: [trails]
+      summary: Submit a new community trail
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrailInput"
+      responses:
+        "201":
+          description: Trail submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Trail"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+
+  /trails/stats:
+    get:
+      operationId: getTrailStats
+      tags: [trails]
+      summary: Get summary stats across all trails
+      responses:
+        "200":
+          description: Trail statistics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TrailStats"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +124,104 @@ components:
       required:
         - status
 
+    Trail:
+      type: object
+      required:
+        - id
+        - name
+        - distance_km
+        - elevation_gain_m
+        - difficulty
+        - duration_hours
+        - best_season
+        - description
+        - source
+        - created_at
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        distance_km:
+          type: number
+        elevation_gain_m:
+          type: integer
+        difficulty:
+          type: string
+        duration_hours:
+          type: number
+        best_season:
+          type: string
+        description:
+          type: string
+        terrain_type:
+          type: ["string", "null"]
+        source:
+          type: string
+          enum: [curated, community]
+        created_at:
+          type: string
+
+    TrailInput:
+      type: object
+      required:
+        - name
+        - distance_km
+        - elevation_gain_m
+        - difficulty
+        - duration_hours
+        - best_season
+        - description
+      properties:
+        name:
+          type: string
+          minLength: 1
+        distance_km:
+          type: number
+        elevation_gain_m:
+          type: integer
+        difficulty:
+          type: string
+        duration_hours:
+          type: number
+        best_season:
+          type: string
+        description:
+          type: string
+        terrain_type:
+          type: string
+
+    TrailStats:
+      type: object
+      required:
+        - total_trails
+        - curated_count
+        - community_count
+        - by_difficulty
+      properties:
+        total_trails:
+          type: integer
+        curated_count:
+          type: integer
+        community_count:
+          type: integer
+        by_difficulty:
+          type: array
+          items:
+            type: object
+            required:
+              - difficulty
+              - count
+            properties:
+              difficulty:
+                type: string
+              count:
+                type: integer
+
+    ApiError:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
