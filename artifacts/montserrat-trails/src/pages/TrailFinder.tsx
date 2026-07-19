@@ -17,6 +17,7 @@ import {
   Filter,
   Search,
   Activity,
+  Navigation,
 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 
@@ -28,6 +29,9 @@ const getDifficultyVariant = (difficulty: string) => {
   if (diff.includes("moderate")) return "moderate";
   return "default";
 };
+
+const HOME_LAT = 41.6081596;
+const HOME_LNG = 1.8643679;
 
 const TRAILS = [
   {
@@ -41,6 +45,8 @@ const TRAILS = [
     terrain_type: "Path, gentle climb",
     description:
       "Short, family-friendly climb to an 11th-century Romanesque watchtower with sweeping views of the Montserrat massif. The easiest hike on the list.",
+    start_lat: HOME_LAT,
+    start_lng: HOME_LNG,
   },
   {
     id: "2",
@@ -53,6 +59,8 @@ const TRAILS = [
     terrain_type: "Vineyard paths",
     description:
       "A gentle path through vineyards to a 14th-century hermitage. More about the scenery and history than the climb.",
+    start_lat: HOME_LAT,
+    start_lng: HOME_LNG,
   },
   {
     id: "3",
@@ -65,6 +73,8 @@ const TRAILS = [
     terrain_type: "Ridge trail",
     description:
       "A key crossroads on the Serra del Cul de la Portadora ridge, with a hidden spring nearby and connections toward Turó de la Socarrada.",
+    start_lat: HOME_LAT,
+    start_lng: HOME_LNG,
   },
   {
     id: "4",
@@ -77,6 +87,8 @@ const TRAILS = [
     terrain_type: "Rocky ridge",
     description:
       "Highest point of the Serra de l'Hospici at 519m, reached via a short detour off the main ridge path. Strong panoramic reward for the climb.",
+    start_lat: HOME_LAT,
+    start_lng: HOME_LNG,
   },
   {
     id: "5",
@@ -89,6 +101,8 @@ const TRAILS = [
     terrain_type: "Forest, summit",
     description:
       "A 396m summit on the Vacarisses/Esparreguera border. The 'Era de les Bruixes' spot has a slightly eerie, magical feel — worth timing for golden hour.",
+    start_lat: HOME_LAT,
+    start_lng: HOME_LNG,
   },
   {
     id: "6",
@@ -100,6 +114,8 @@ const TRAILS = [
     best_season: "Year-round (check water levels after rain)",
     terrain_type: "Riverbed, flat",
     description: "A local riverbed walk near Monistrol — flat, shaded, and a nice low-effort option.",
+    start_lat: HOME_LAT,
+    start_lng: HOME_LNG,
   },
   {
     id: "7",
@@ -112,6 +128,8 @@ const TRAILS = [
     terrain_type: "Mountain, steep",
     description:
       "A demanding full-day route to a historic hermitage, passing through Coll de les Bruixes and the Serra de l'Hospici. Not suitable for kids or casual hikers.",
+    start_lat: HOME_LAT,
+    start_lng: HOME_LNG,
   },
 ];
 
@@ -294,7 +312,7 @@ export default function TrailFinder() {
                     </CardDescription>
                   </CardHeader>
 
-                  <CardContent className="pt-5 flex-grow">
+                  <CardContent className="pt-5 flex-grow flex flex-col">
                     <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed">
                       {trail.description}
                     </p>
@@ -309,6 +327,23 @@ export default function TrailFinder() {
                         <span className="text-muted-foreground">{trail.best_season}</span>
                       </div>
                     </div>
+
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="sm"
+                      className="mt-5 w-full"
+                    >
+                      
+                        <a
+                          href={"https://www.google.com/maps/dir/?api=1&destination=" + trail.start_lat + "," + trail.start_lng}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Navigation className="w-3.5 h-3.5 mr-2" />
+                        Get Directions
+                      </a>
+                    </Button>
                   </CardContent>
                 </Card>
               ))}
