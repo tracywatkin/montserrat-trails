@@ -1,44 +1,31 @@
-import { useGetTrailStats } from "@workspace/api-client-react";
-import { 
-  Card, 
-  CardContent, 
-  CardHeader, 
-  CardTitle 
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
-import { 
-  BarChart3, 
-  Map, 
-  Users, 
+import {
+  BarChart3,
+  Map,
+  Users,
   Mountain,
-  Activity
+  Activity,
 } from "lucide-react";
 
+const stats = {
+  total_trails: 7,
+  curated_count: 7,
+  community_count: 0,
+  by_difficulty: [
+    { difficulty: "Easy", count: 2 },
+    { difficulty: "Easy-Moderate", count: 1 },
+    { difficulty: "Moderate", count: 2 },
+    { difficulty: "Moderate-Hard", count: 1 },
+    { difficulty: "Hard", count: 1 },
+  ],
+};
+
 export default function Stats() {
-  const { data: stats, isLoading, error } = useGetTrailStats();
-
-  if (isLoading) {
-    return (
-      <div className="container mx-auto px-4 py-12 max-w-5xl">
-        <div className="h-10 bg-muted/50 rounded w-1/4 mb-10 animate-pulse" />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {[1, 2, 3].map(i => <Card key={i} className="h-32 bg-muted/30 animate-pulse" />)}
-        </div>
-        <Card className="h-64 bg-muted/30 animate-pulse" />
-      </div>
-    );
-  }
-
-  if (error || !stats) {
-    return (
-      <div className="container mx-auto px-4 py-20 text-center">
-        <div className="bg-destructive/10 text-destructive p-6 rounded-xl inline-block">
-          <p className="font-medium">Unable to load statistics.</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Pre-sort difficulty logically if possible, else just use the array returned
   const diffOrder = ["Easy", "Easy-Moderate", "Moderate", "Moderate-Hard", "Hard"];
   const sortedDifficultyStats = [...stats.by_difficulty].sort((a, b) => {
     const idxA = diffOrder.indexOf(a.difficulty);
@@ -61,7 +48,6 @@ export default function Stats() {
         </p>
       </div>
 
-      {/* Top Level Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         <Card className="bg-primary/5 border-primary/20">
           <CardContent className="p-6 flex items-center gap-4">
@@ -106,7 +92,6 @@ export default function Stats() {
         </Card>
       </div>
 
-      {/* Breakdown by Difficulty */}
       <Card className="border-border">
         <CardHeader className="border-b border-border/50 bg-card">
           <CardTitle className="font-serif text-xl flex items-center gap-2">
@@ -117,13 +102,11 @@ export default function Stats() {
         <CardContent className="p-6 md:p-8">
           <div className="space-y-6">
             {sortedDifficultyStats.map((item) => {
-              // Calculate percentage for the bar width
               const percentage = Math.max(
-                (item.count / stats.total_trails) * 100, 
+                (item.count / stats.total_trails) * 100,
                 0
               );
-              
-              // Color based on difficulty word
+
               let barColorClass = "bg-primary/60";
               const diff = item.difficulty.toLowerCase();
               if (diff.includes("easy")) barColorClass = "bg-emerald-500/70";
@@ -134,10 +117,12 @@ export default function Stats() {
                 <div key={item.difficulty} className="space-y-2">
                   <div className="flex justify-between text-sm font-medium">
                     <span className="text-foreground">{item.difficulty}</span>
-                    <span className="text-muted-foreground">{item.count} trails ({percentage.toFixed(0)}%)</span>
+                    <span className="text-muted-foreground">
+                      {item.count} trails ({percentage.toFixed(0)}%)
+                    </span>
                   </div>
                   <div className="w-full bg-secondary rounded-full h-3 overflow-hidden">
-                    <div 
+                    <div
                       className={`h-full rounded-full transition-all duration-1000 ease-out ${barColorClass}`}
                       style={{ width: `${percentage}%` }}
                     />
@@ -145,7 +130,7 @@ export default function Stats() {
                 </div>
               );
             })}
-            
+
             {sortedDifficultyStats.length === 0 && (
               <p className="text-center text-muted-foreground py-4">No difficulty data available.</p>
             )}
