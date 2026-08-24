@@ -20,8 +20,7 @@ export const translations = {
     },
     home: {
       badge: "Hiking trails around Vacarisses & Montserrat",
-      titlePrefix: "Get out and hike",
-      titleSuffix: ".",
+      title: "Get out and hike",
       subtitle: "Real trails, real views, grab one and go.",
       ctaFindTrail: "Find a Trail",
       ctaCommunityRoutes: "Community Routes",
@@ -98,8 +97,7 @@ export const translations = {
     },
     home: {
       badge: "Rutas de senderismo por Vacarisses y Montserrat",
-      titlePrefix: "Sal a caminar por",
-      titleSuffix: ".",
+      title: "Sal a caminar",
       subtitle: "Rutas reales, vistas reales: coge una y vete.",
       ctaFindTrail: "Buscar una Ruta",
       ctaCommunityRoutes: "Rutas de la Comunidad",
@@ -176,8 +174,7 @@ export const translations = {
     },
     home: {
       badge: "Rutes de senderisme per Vacarisses i Montserrat",
-      titlePrefix: "Surt a caminar per",
-      titleSuffix: ".",
+      title: "Surt a caminar",
       subtitle: "Rutes reals, vistes reals: agafa'n una i vés-hi.",
       ctaFindTrail: "Cerca una Ruta",
       ctaCommunityRoutes: "Rutes de la Comunitat",
