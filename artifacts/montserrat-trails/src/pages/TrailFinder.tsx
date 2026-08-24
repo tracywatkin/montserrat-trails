@@ -252,11 +252,10 @@ export default function TrailFinder() {
                     >
                       <a
                         href={
-                          "https://www.google.com/maps/dir/?api=1&destination=" +
+                          "https://www.google.com/maps/search/?api=1&query=" +
                           trail.start_lat +
                           "," +
-                          trail.start_lng +
-                          "&travelmode=walking"
+                          trail.start_lng
                         }
                         target="_blank"
                         rel="noopener noreferrer"

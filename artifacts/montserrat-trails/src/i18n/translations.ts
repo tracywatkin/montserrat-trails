@@ -54,7 +54,7 @@ export const translations = {
         "We couldn't find any paths matching those filters. Try broadening your search criteria.",
       terrain: "Terrain:",
       bestIn: "Best in:",
-      getDirections: "Walking Directions",
+      getDirections: "Open Trailhead in Maps",
       mapUnavailable: "Map unavailable",
     },
     community: {
@@ -131,7 +131,7 @@ export const translations = {
         "No encontramos ninguna ruta que coincida con esos filtros. Prueba a ampliar tus criterios de búsqueda.",
       terrain: "Terreno:",
       bestIn: "Mejor época:",
-      getDirections: "Cómo llegar a pie",
+      getDirections: "Ver inicio en el mapa",
       mapUnavailable: "Mapa no disponible",
     },
     community: {
@@ -208,7 +208,7 @@ export const translations = {
         "No hem trobat cap ruta que coincideixi amb aquests filtres. Prova d'ampliar els criteris de cerca.",
       terrain: "Terreny:",
       bestIn: "Millor època:",
-      getDirections: "Com arribar-hi a peu",
+      getDirections: "Veure inici al mapa",
       mapUnavailable: "Mapa no disponible",
     },
     community: {

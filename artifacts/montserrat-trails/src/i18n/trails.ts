@@ -138,7 +138,7 @@ const TRAILS_LOCALIZED: Record<Language, Record<string, TrailLocalizedFields>> =
       best_season: "Spring, Autumn",
       terrain_type: "Vineyard paths",
       description:
-        "A gentle path through vineyards to a 14th-century hermitage. More about the scenery and history than the climb.",
+        "A gentle path through vineyards to an old Gothic-style hermitage. More about the scenery and history than the climb.",
     },
     "3": {
       best_season: "Spring, Autumn",
@@ -162,7 +162,7 @@ const TRAILS_LOCALIZED: Record<Language, Record<string, TrailLocalizedFields>> =
       best_season: "Spring, Autumn",
       terrain_type: "Mountain, steep",
       description:
-        "A demanding full-day route to a historic hermitage, passing through Coll de les Bruixes and the Serra de l'Hospici. Not suitable for kids or casual hikers.",
+        "A demanding full-day route to a historic hermitage, passing through Coll de les Bruixes and the Serra de l'Hospici. The chapel's roof partially collapsed in 2024 and restoration is still underway — it's badly damaged and you can't go inside, but the approach and viewpoint remain open and worth the climb. Not suitable for kids or casual hikers.",
     },
     "8": {
       best_season: "Year-round",
@@ -182,7 +182,7 @@ const TRAILS_LOCALIZED: Record<Language, Record<string, TrailLocalizedFields>> =
       best_season: "Primavera, Otoño",
       terrain_type: "Caminos entre viñedos",
       description:
-        "Un camino suave entre viñedos hasta una ermita del siglo XIV. Más centrado en el paisaje y la historia que en el desnivel.",
+        "Un camino suave entre viñedos hasta una antigua ermita de estilo gótico. Más centrado en el paisaje y la historia que en el desnivel.",
     },
     "3": {
       best_season: "Primavera, Otoño",
@@ -206,7 +206,7 @@ const TRAILS_LOCALIZED: Record<Language, Record<string, TrailLocalizedFields>> =
       best_season: "Primavera, Otoño",
       terrain_type: "Montaña, pendiente pronunciada",
       description:
-        "Una ruta exigente de día completo hasta una ermita histórica, pasando por el Coll de les Bruixes y la Serra de l'Hospici. No recomendada para niños ni para senderistas ocasionales.",
+        "Una ruta exigente de día completo hasta una ermita histórica, pasando por el Coll de les Bruixes y la Serra de l'Hospici. El tejado de la capilla se hundió parcialmente en 2024 y la restauración sigue en marcha: está muy dañada y no se puede entrar, pero el camino de acceso y el mirador siguen abiertos y merecen la subida. No recomendada para niños ni para senderistas ocasionales.",
     },
     "8": {
       best_season: "Todo el año",
@@ -226,7 +226,7 @@ const TRAILS_LOCALIZED: Record<Language, Record<string, TrailLocalizedFields>> =
       best_season: "Primavera, Tardor",
       terrain_type: "Camins entre vinyes",
       description:
-        "Un camí suau entre vinyes fins a una ermita del segle XIV. Més centrat en el paisatge i la història que no pas en el desnivell.",
+        "Un camí suau entre vinyes fins a una antiga ermita d'estil gòtic. Més centrat en el paisatge i la història que no pas en el desnivell.",
     },
     "3": {
       best_season: "Primavera, Tardor",
@@ -250,7 +250,7 @@ const TRAILS_LOCALIZED: Record<Language, Record<string, TrailLocalizedFields>> =
       best_season: "Primavera, Tardor",
       terrain_type: "Muntanya, pendent pronunciat",
       description:
-        "Una ruta exigent de dia complet fins a una ermita històrica, passant pel Coll de les Bruixes i la Serra de l'Hospici. No recomanada per a infants ni per a excursionistes ocasionals.",
+        "Una ruta exigent de dia complet fins a una ermita històrica, passant pel Coll de les Bruixes i la Serra de l'Hospici. La teulada de la capella es va enfonsar parcialment el 2024 i la restauració encara està en marxa: està molt malmesa i no s'hi pot entrar, però el camí d'accés i el mirador continuen oberts i valen la pujada. No recomanada per a infants ni per a excursionistes ocasionals.",
     },
     "8": {
       best_season: "Tot l'any",
