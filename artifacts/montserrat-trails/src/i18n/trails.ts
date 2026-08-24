@@ -119,7 +119,7 @@ const TRAILS_BASE: TrailBase[] = [
     name: "Monistrol – Monestir de Montserrat",
     distance_km: 13.6,
     elevation_gain_m: 600,
-    difficulty: "moderate",
+    difficulty: "hard",
     duration_hours: 3.5,
     start_lat: 41.61032,
     start_lng: 1.848958,
