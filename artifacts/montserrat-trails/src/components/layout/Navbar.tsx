@@ -2,15 +2,18 @@ import { Link, useLocation } from "wouter";
 import { Mountain, Compass, Users, BarChart3, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/i18n/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navItems = [
-    { href: "/trails", label: "Trail Finder", icon: <Compass className="w-4 h-4 mr-2" /> },
-    { href: "/community", label: "Community", icon: <Users className="w-4 h-4 mr-2" /> },
-    { href: "/stats", label: "Stats", icon: <BarChart3 className="w-4 h-4 mr-2" /> },
+    { href: "/trails", label: t.nav.trailFinder, icon: <Compass className="w-4 h-4 mr-2" /> },
+    { href: "/community", label: t.nav.community, icon: <Users className="w-4 h-4 mr-2" /> },
+    { href: "/stats", label: t.nav.stats, icon: <BarChart3 className="w-4 h-4 mr-2" /> },
   ];
 
   return (
@@ -22,7 +25,7 @@ export default function Navbar() {
               <Mountain className="w-6 h-6 text-primary" />
             </div>
             <span className="font-serif font-bold text-xl tracking-tight text-foreground">
-              Montserrat Trails
+              {t.nav.brand}
             </span>
           </Link>
 
@@ -45,10 +48,14 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            <div className="ml-2 pl-2 border-l border-border">
+              <LanguageSwitcher />
+            </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-1">
+            <LanguageSwitcher />
             <Button
               variant="ghost"
               size="icon"

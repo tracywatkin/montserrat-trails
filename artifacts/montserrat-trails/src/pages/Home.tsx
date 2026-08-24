@@ -1,8 +1,11 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Compass, Users, Map, ArrowRight, Mountain } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <div className="w-full flex flex-col items-center">
       {/* Hero Section */}
@@ -20,24 +23,24 @@ export default function Home() {
         <div className="container relative z-20 px-4 md:px-6 text-center max-w-4xl mx-auto flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-6">
             <Mountain className="mr-2 h-4 w-4" />
-            <span>A guide to trails around Montserrat (Vacarisses)</span>
+            <span>{t.home.badge}</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold tracking-tight text-foreground mb-6 leading-tight">
-            Discover the magic of <span className="text-primary">Montserrat</span>.
+            {t.home.titlePrefix} <span className="text-primary">Montserrat</span>{t.home.titleSuffix}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-            Find the perfect path through ancient conglomerate rock, hidden hermitages, and sweeping views of Catalonia. Curated by locals, explored by you.
+            {t.home.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
             <Link href="/trails">
               <Button size="lg" className="w-full sm:w-auto text-base h-12 px-8 shadow-md group">
-                Find a Trail
+                {t.home.ctaFindTrail}
                 <Compass className="ml-2 h-4 w-4 group-hover:rotate-45 transition-transform" />
               </Button>
             </Link>
             <Link href="/community">
               <Button size="lg" variant="outline" className="w-full sm:w-auto text-base h-12 px-8 border-primary/20 hover:bg-primary/5">
-                Community Routes
+                {t.home.ctaCommunityRoutes}
                 <Users className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -53,9 +56,9 @@ export default function Home() {
               <div className="p-3 bg-primary/10 rounded-full text-primary">
                 <Map className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-serif font-semibold">Curated Paths</h3>
+              <h3 className="text-xl font-serif font-semibold">{t.home.featuresCuratedTitle}</h3>
               <p className="text-muted-foreground text-sm">
-                From the accessible Sant Jeroni summit to the hidden paths of Agulles, find trails graded for every level.
+                {t.home.featuresCuratedDesc}
               </p>
             </div>
             
@@ -63,9 +66,9 @@ export default function Home() {
               <div className="p-3 bg-accent/10 rounded-full text-accent">
                 <Users className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-serif font-semibold">Local Knowledge</h3>
+              <h3 className="text-xl font-serif font-semibold">{t.home.featuresLocalTitle}</h3>
               <p className="text-muted-foreground text-sm">
-                Discover routes submitted by the hiking community. Share your own variations and secret spots.
+                {t.home.featuresLocalDesc}
               </p>
             </div>
 
@@ -73,9 +76,9 @@ export default function Home() {
               <div className="p-3 bg-secondary-foreground/10 rounded-full text-secondary-foreground">
                 <Compass className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-serif font-semibold">Field Guide Feel</h3>
+              <h3 className="text-xl font-serif font-semibold">{t.home.featuresFieldGuideTitle}</h3>
               <p className="text-muted-foreground text-sm">
-                Clean, readable trail data without the clutter. Designed to be your companion on the mountain.
+                {t.home.featuresFieldGuideDesc}
               </p>
             </div>
           </div>
@@ -85,13 +88,13 @@ export default function Home() {
       {/* CTA Section */}
       <section className="w-full py-24 px-4 text-center">
         <div className="max-w-2xl mx-auto flex flex-col items-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold">Ready to lace up?</h2>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold">{t.home.ctaReady}</h2>
           <p className="text-muted-foreground">
-            Whether you have two hours or a full day, the mountain is waiting.
+            {t.home.ctaReadySubtitle}
           </p>
           <Link href="/trails">
             <Button size="lg" variant="secondary" className="mt-4 font-medium group">
-              Start Exploring
+              {t.home.ctaStartExploring}
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>

@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import {
   MapPin,
   Clock,
-  Mountain as MountainIcon,
   ArrowUpRight,
   Filter,
   Search,
@@ -20,118 +19,42 @@ import {
   Navigation,
 } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { getLocalizedTrails, DIFFICULTY_KEYS, difficultyLabels, type DifficultyKey } from "@/i18n/trails";
+import TrailMap from "@/components/TrailMap";
 
 // Helper to determine badge color based on difficulty
-const getDifficultyVariant = (difficulty: string) => {
-  const diff = difficulty.toLowerCase();
-  if (diff.includes("easy")) return "easy";
-  if (diff.includes("hard")) return "hard";
-  if (diff.includes("moderate")) return "moderate";
+const getDifficultyVariant = (difficulty: DifficultyKey) => {
+  if (difficulty === "easy") return "easy";
+  if (difficulty === "hard") return "hard";
+  if (difficulty.includes("moderate")) return "moderate";
   return "default";
 };
 
-const HOME_LAT = 41.6081596;
-const HOME_LNG = 1.8643679;
-
-const TRAILS = [
-  {
-    id: "1",
-    name: "La Torrota",
-    distance_km: 4,
-    elevation_gain_m: 104,
-    difficulty: "Easy",
-    duration_hours: 1.2,
-    best_season: "Year-round",
-    terrain_type: "Path, gentle climb",
-    description:
-      "Short, family-friendly climb to an 11th-century Romanesque watchtower with sweeping views of the Montserrat massif. The easiest hike on the list.",
-    start_lat: 41.6100137,
-    start_lng: 1.9076787,
-  },
-  {
-    id: "2",
-    name: "Ermita de Sant Antolí",
-    distance_km: 5,
-    elevation_gain_m: 150,
-    difficulty: "Easy-Moderate",
-    duration_hours: 1.5,
-    best_season: "Spring, Autumn",
-    terrain_type: "Vineyard paths",
-    description:
-      "A gentle path through vineyards to a 14th-century hermitage. More about the scenery and history than the climb.",
-    start_lat: 41.6186526,
-    start_lng: 1.8575418,
-  },
-  {
-    id: "3",
-    name: "Coll de les Bruixes",
-    distance_km: 7,
-    elevation_gain_m: 350,
-    difficulty: "Moderate",
-    duration_hours: 2.5,
-    best_season: "Spring, Autumn",
-    terrain_type: "Ridge trail",
-    description:
-      "A key crossroads on the Serra del Cul de la Portadora ridge, with a hidden spring nearby and connections toward Turó de la Socarrada.",
-    start_lat: 41.5894463,
-    start_lng: 1.8711916,
-  },
-  {
-    id: "4",
-    name: "Turó de la Socarrada",
-    distance_km: 8,
-    elevation_gain_m: 450,
-    difficulty: "Moderate-Hard",
-    duration_hours: 3,
-    best_season: "Spring, Autumn",
-    terrain_type: "Rocky ridge",
-    description:
-      "Highest point of the Serra de l'Hospici at 519m, reached via a short detour off the main ridge path. Strong panoramic reward for the climb.",
-    start_lat: 41.5855104,
-    start_lng: 1.873761,
-  },
-  {
-    id: "5",
-    name: "Pla de les Bruixes",
-    distance_km: 7,
-    elevation_gain_m: 300,
-    difficulty: "Moderate",
-    duration_hours: 2.5,
-    best_season: "Year-round, especially at sunset",
-    terrain_type: "Forest, summit",
-    description:
-      "A 396m summit on the Vacarisses/Esparreguera border. The 'Era de les Bruixes' spot has a slightly eerie, magical feel — worth timing for golden hour.",
-    start_lat: 41.5803666,
-    start_lng: 1.8657205,
-  },
-  {
-    id: "7",
-    name: "Sant Salvador de les Espases",
-    distance_km: 16.5,
-    elevation_gain_m: 800,
-    difficulty: "Hard",
-    duration_hours: 5.5,
-    best_season: "Spring, Autumn",
-    terrain_type: "Mountain, steep",
-    description:
-      "A demanding full-day route to a historic hermitage, passing through Coll de les Bruixes and the Serra de l'Hospici. Not suitable for kids or casual hikers.",
-    start_lat: 41.5789797,
-    start_lng: 1.8842971,
-  },
-];
+type DurationFilterKey = "any" | "short" | "half" | "full";
 
 export default function TrailFinder() {
-  const [difficultyFilter, setDifficultyFilter] = useState<string>("Any");
-  const [durationFilter, setDurationFilter] = useState<string>("Any");
+  const { t, language } = useLanguage();
+  const [difficultyFilter, setDifficultyFilter] = useState<DifficultyKey | "any">("any");
+  const [durationFilter, setDurationFilter] = useState<DurationFilterKey>("any");
   const [terrainFilter, setTerrainFilter] = useState<string>("");
+
+  const allTrails = useMemo(() => getLocalizedTrails(language), [language]);
+
+  const durationOptions: { key: DurationFilterKey; label: string }[] = [
+    { key: "any", label: t.trailFinder.any },
+    { key: "short", label: t.trailFinder.durationShort },
+    { key: "half", label: t.trailFinder.durationHalf },
+    { key: "full", label: t.trailFinder.durationFull },
+  ];
 
   const durationParams = useMemo(() => {
     switch (durationFilter) {
-      case "Short (0-2h)":
+      case "short":
         return { min: 0, max: 2 };
-      case "Half Day (2-4h)":
+      case "half":
         return { min: 2, max: 4 };
-      case "Full Day (4h+)":
+      case "full":
         return { min: 4, max: Infinity };
       default:
         return { min: 0, max: Infinity };
@@ -139,8 +62,8 @@ export default function TrailFinder() {
   }, [durationFilter]);
 
   const trails = useMemo(() => {
-    return TRAILS.filter((trail) => {
-      if (difficultyFilter !== "Any" && trail.difficulty !== difficultyFilter) return false;
+    return allTrails.filter((trail) => {
+      if (difficultyFilter !== "any" && trail.difficulty !== difficultyFilter) return false;
       if (trail.duration_hours < durationParams.min || trail.duration_hours > durationParams.max)
         return false;
       if (
@@ -150,15 +73,22 @@ export default function TrailFinder() {
         return false;
       return true;
     });
-  }, [difficultyFilter, durationParams, terrainFilter]);
+  }, [allTrails, difficultyFilter, durationParams, terrainFilter]);
+
+  const hasActiveFilters = difficultyFilter !== "any" || durationFilter !== "any" || terrainFilter !== "";
+  const clearAllFilters = () => {
+    setDifficultyFilter("any");
+    setDurationFilter("any");
+    setTerrainFilter("");
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
         <div>
-          <h1 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-3">Trail Finder</h1>
+          <h1 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-3">{t.trailFinder.title}</h1>
           <p className="text-muted-foreground text-lg max-w-2xl">
-            Discover curated routes across Montserrat. Filter by difficulty, time, or terrain to find your perfect path.
+            {t.trailFinder.subtitle}
           </p>
         </div>
       </div>
@@ -168,17 +98,17 @@ export default function TrailFinder() {
           <div className="bg-card border border-border rounded-xl p-5 shadow-sm sticky top-24">
             <div className="flex items-center gap-2 mb-6 pb-4 border-b border-border">
               <Filter className="w-5 h-5 text-primary" />
-              <h2 className="font-serif text-xl font-semibold">Filters</h2>
+              <h2 className="font-serif text-xl font-semibold">{t.trailFinder.filters}</h2>
             </div>
 
             <div className="space-y-6">
               <div className="space-y-3">
                 <Label className="text-sm font-semibold text-foreground flex items-center gap-2">
                   <Activity className="w-4 h-4 text-muted-foreground" />
-                  Difficulty
+                  {t.trailFinder.difficulty}
                 </Label>
                 <div className="flex flex-wrap gap-2">
-                  {["Any", "Easy", "Easy-Moderate", "Moderate", "Moderate-Hard", "Hard"].map((diff) => (
+                  {(["any", ...DIFFICULTY_KEYS] as const).map((diff) => (
                     <Badge
                       key={diff}
                       variant={difficultyFilter === diff ? "default" : "outline"}
@@ -189,7 +119,7 @@ export default function TrailFinder() {
                       }`}
                       onClick={() => setDifficultyFilter(diff)}
                     >
-                      {diff}
+                      {diff === "any" ? t.trailFinder.any : difficultyLabels[language][diff]}
                     </Badge>
                   ))}
                 </div>
@@ -198,20 +128,20 @@ export default function TrailFinder() {
               <div className="space-y-3">
                 <Label className="text-sm font-semibold text-foreground flex items-center gap-2">
                   <Clock className="w-4 h-4 text-muted-foreground" />
-                  Duration
+                  {t.trailFinder.duration}
                 </Label>
                 <div className="flex flex-col gap-2">
-                  {["Any", "Short (0-2h)", "Half Day (2-4h)", "Full Day (4h+)"].map((dur) => (
+                  {durationOptions.map((dur) => (
                     <Button
-                      key={dur}
-                      variant={durationFilter === dur ? "secondary" : "ghost"}
+                      key={dur.key}
+                      variant={durationFilter === dur.key ? "secondary" : "ghost"}
                       size="sm"
                       className={`justify-start font-medium ${
-                        durationFilter === dur ? "bg-secondary/70" : "text-muted-foreground"
+                        durationFilter === dur.key ? "bg-secondary/70" : "text-muted-foreground"
                       }`}
-                      onClick={() => setDurationFilter(dur)}
+                      onClick={() => setDurationFilter(dur.key)}
                     >
-                      {dur}
+                      {dur.label}
                     </Button>
                   ))}
                 </div>
@@ -220,12 +150,12 @@ export default function TrailFinder() {
               <div className="space-y-3">
                 <Label className="text-sm font-semibold text-foreground flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-muted-foreground" />
-                  Terrain Type
+                  {t.trailFinder.terrainType}
                 </Label>
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
-                    placeholder="e.g. ridge, riverbed..."
+                    placeholder={t.trailFinder.terrainPlaceholder}
                     className="pl-9 bg-background/50 border-border/60"
                     value={terrainFilter}
                     onChange={(e) => setTerrainFilter(e.target.value)}
@@ -233,17 +163,13 @@ export default function TrailFinder() {
                 </div>
               </div>
 
-              {(difficultyFilter !== "Any" || durationFilter !== "Any" || terrainFilter !== "") && (
+              {hasActiveFilters && (
                 <Button
                   variant="ghost"
                   className="w-full mt-6 text-muted-foreground hover:text-foreground"
-                  onClick={() => {
-                    setDifficultyFilter("Any");
-                    setDurationFilter("Any");
-                    setTerrainFilter("");
-                  }}
+                  onClick={clearAllFilters}
                 >
-                  Clear all filters
+                  {t.trailFinder.clearFilters}
                 </Button>
               )}
             </div>
@@ -254,19 +180,12 @@ export default function TrailFinder() {
           {trails.length === 0 ? (
             <div className="text-center py-24 bg-card border border-border border-dashed rounded-xl flex flex-col items-center">
               <MapPin className="w-12 h-12 text-muted-foreground/30 mb-4" />
-              <h3 className="text-xl font-serif font-semibold text-foreground mb-2">No trails found</h3>
+              <h3 className="text-xl font-serif font-semibold text-foreground mb-2">{t.trailFinder.noTrailsTitle}</h3>
               <p className="text-muted-foreground max-w-sm mx-auto mb-6">
-                We couldn't find any paths matching those filters. Try broadening your search criteria.
+                {t.trailFinder.noTrailsDesc}
               </p>
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setDifficultyFilter("Any");
-                  setDurationFilter("Any");
-                  setTerrainFilter("");
-                }}
-              >
-                Clear Filters
+              <Button variant="outline" onClick={clearAllFilters}>
+                {t.trailFinder.clearFiltersBtn}
               </Button>
             </div>
           ) : (
@@ -276,7 +195,7 @@ export default function TrailFinder() {
                   <CardHeader className="pb-4 items-start gap-2 border-b border-border/30 bg-secondary/20">
                     <div className="flex justify-between items-start w-full">
                       <Badge variant={getDifficultyVariant(trail.difficulty) as any} className="mb-2 uppercase tracking-wider text-[10px] font-bold">
-                        {trail.difficulty}
+                        {trail.difficultyLabel}
                       </Badge>
                       <span className="text-xs text-muted-foreground flex items-center gap-1 font-medium bg-background px-2 py-1 rounded-md border border-border/50">
                         <Clock className="w-3 h-3" />
@@ -306,29 +225,44 @@ export default function TrailFinder() {
 
                     <div className="mt-5 space-y-2">
                       <div className="flex items-start gap-2 text-xs">
-                        <span className="font-semibold text-foreground min-w-16">Terrain:</span>
+                        <span className="font-semibold text-foreground min-w-16">{t.trailFinder.terrain}</span>
                         <span className="text-muted-foreground">{trail.terrain_type}</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <span className="font-semibold text-foreground min-w-16">Best in:</span>
+                        <span className="font-semibold text-foreground min-w-16">{t.trailFinder.bestIn}</span>
                         <span className="text-muted-foreground">{trail.best_season}</span>
                       </div>
+                    </div>
+
+                    <div className="mt-5 rounded-lg overflow-hidden border border-border/60 h-40">
+                      <TrailMap
+                        lat={trail.start_lat}
+                        lng={trail.start_lng}
+                        name={trail.name}
+                        route={trail.route}
+                        className="h-full w-full"
+                      />
                     </div>
 
                     <Button
                       asChild
                       variant="outline"
                       size="sm"
-                      className="mt-5 w-full"
+                      className="mt-3 w-full"
                     >
-                      
-                        <a
-                          href={"https://www.google.com/maps/dir/?api=1&destination=" + trail.start_lat + "," + trail.start_lng}
+                      <a
+                        href={
+                          "https://www.google.com/maps/dir/?api=1&destination=" +
+                          trail.start_lat +
+                          "," +
+                          trail.start_lng +
+                          "&travelmode=walking"
+                        }
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Navigation className="w-3.5 h-3.5 mr-2" />
-                        Get Directions
+                        {t.trailFinder.getDirections}
                       </a>
                     </Button>
                   </CardContent>
