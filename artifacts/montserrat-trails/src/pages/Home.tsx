@@ -26,7 +26,7 @@ export default function Home() {
             <span>{t.home.badge}</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold tracking-tight text-foreground mb-6 leading-tight">
-            {t.home.titlePrefix} <span className="text-primary">Montserrat</span>{t.home.titleSuffix}
+            {t.home.title}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
             {t.home.subtitle}
