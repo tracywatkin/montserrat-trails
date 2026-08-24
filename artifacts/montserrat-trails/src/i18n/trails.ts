@@ -114,6 +114,16 @@ const TRAILS_BASE: TrailBase[] = [
     start_lat: 41.611051,
     start_lng: 1.84489,
   },
+  {
+    id: "8",
+    name: "Monistrol – Monestir de Montserrat",
+    distance_km: 13.6,
+    elevation_gain_m: 600,
+    difficulty: "moderate",
+    duration_hours: 3.5,
+    start_lat: 41.61032,
+    start_lng: 1.848958,
+  },
 ];
 
 const TRAILS_LOCALIZED: Record<Language, Record<string, TrailLocalizedFields>> = {
@@ -154,6 +164,12 @@ const TRAILS_LOCALIZED: Record<Language, Record<string, TrailLocalizedFields>> =
       description:
         "A demanding full-day route to a historic hermitage, passing through Coll de les Bruixes and the Serra de l'Hospici. Not suitable for kids or casual hikers.",
     },
+    "8": {
+      best_season: "Year-round",
+      terrain_type: "Stone path, many steps near the top",
+      description:
+        "The classic pilgrimage route from the valley town of Monistrol de Montserrat up to the monastery, following the Camí de les Aigües and the steeper Drecera dels Tres Quarts. A there-and-back climb through pine forest with the monastery bells as your reward.",
+    },
   },
   es: {
     "1": {
@@ -192,6 +208,12 @@ const TRAILS_LOCALIZED: Record<Language, Record<string, TrailLocalizedFields>> =
       description:
         "Una ruta exigente de día completo hasta una ermita histórica, pasando por el Coll de les Bruixes y la Serra de l'Hospici. No recomendada para niños ni para senderistas ocasionales.",
     },
+    "8": {
+      best_season: "Todo el año",
+      terrain_type: "Camino de piedra, muchos escalones cerca de la cima",
+      description:
+        "La ruta clásica de peregrinación desde el pueblo de Monistrol de Montserrat hasta el monasterio, siguiendo el Camí de les Aigües y la más empinada Drecera dels Tres Quarts. Una subida de ida y vuelta entre pinares, con las campanas del monasterio como recompensa.",
+    },
   },
   ca: {
     "1": {
@@ -229,6 +251,12 @@ const TRAILS_LOCALIZED: Record<Language, Record<string, TrailLocalizedFields>> =
       terrain_type: "Muntanya, pendent pronunciat",
       description:
         "Una ruta exigent de dia complet fins a una ermita històrica, passant pel Coll de les Bruixes i la Serra de l'Hospici. No recomanada per a infants ni per a excursionistes ocasionals.",
+    },
+    "8": {
+      best_season: "Tot l'any",
+      terrain_type: "Camí de pedra, molts esglaons a prop del cim",
+      description:
+        "La ruta clàssica de pelegrinatge des del poble de Monistrol de Montserrat fins al monestir, seguint el Camí de les Aigües i la més empinada Drecera dels Tres Quarts. Una pujada d'anada i tornada entre pinedes, amb les campanes del monestir com a recompensa.",
     },
   },
 };

@@ -15,34 +15,30 @@ export const translations = {
       stats: "Stats",
     },
     footer: {
-      tagline: "A trusted guide to the serrated mountain.",
+      tagline: "A trusted guide for hiking around Vacarisses and Montserrat.",
       leaveNoTrace: "Respect the trails. Leave no trace.",
     },
     home: {
-      badge: "A guide to trails around Montserrat (Vacarisses)",
-      titlePrefix: "Discover the magic of",
+      badge: "Hiking trails around Vacarisses & Montserrat",
+      titlePrefix: "Get out and hike",
       titleSuffix: ".",
-      subtitle:
-        "Find the perfect path through ancient conglomerate rock, hidden hermitages, and sweeping views of Catalonia. Curated by locals, explored by you.",
+      subtitle: "Real trails, real views, grab one and go.",
       ctaFindTrail: "Find a Trail",
       ctaCommunityRoutes: "Community Routes",
       featuresCuratedTitle: "Curated Paths",
-      featuresCuratedDesc:
-        "From the accessible Sant Jeroni summit to the hidden paths of Agulles, find trails graded for every level.",
+      featuresCuratedDesc: "Easy strolls to steep climbs — something for every level.",
       featuresLocalTitle: "Local Knowledge",
-      featuresLocalDesc:
-        "Discover routes submitted by the hiking community. Share your own variations and secret spots.",
+      featuresLocalDesc: "Routes shared by hikers who actually walked them.",
       featuresFieldGuideTitle: "Field Guide Feel",
-      featuresFieldGuideDesc:
-        "Clean, readable trail data without the clutter. Designed to be your companion on the mountain.",
-      ctaReady: "Ready to lace up?",
-      ctaReadySubtitle: "Whether you have two hours or a full day, the mountain is waiting.",
+      featuresFieldGuideDesc: "Just the info you need. No clutter.",
+      ctaReady: "Ready to go?",
+      ctaReadySubtitle: "The mountain is waiting.",
       ctaStartExploring: "Start Exploring",
     },
     trailFinder: {
       title: "Trail Finder",
       subtitle:
-        "Discover curated routes across Montserrat. Filter by difficulty, time, or terrain to find your perfect path.",
+        "Discover curated routes across Vacarisses and Montserrat. Filter by difficulty, time, or terrain to find your perfect path.",
       filters: "Filters",
       difficulty: "Difficulty",
       duration: "Duration",
@@ -97,34 +93,30 @@ export const translations = {
       stats: "Estadísticas",
     },
     footer: {
-      tagline: "Una guía de confianza para la montaña serrada.",
+      tagline: "Una guía de confianza para hacer senderismo por Vacarisses y Montserrat.",
       leaveNoTrace: "Respeta los senderos. No dejes rastro.",
     },
     home: {
-      badge: "Una guía de rutas por Montserrat (Vacarisses)",
-      titlePrefix: "Descubre la magia de",
+      badge: "Rutas de senderismo por Vacarisses y Montserrat",
+      titlePrefix: "Sal a caminar por",
       titleSuffix: ".",
-      subtitle:
-        "Encuentra el camino perfecto entre roca conglomerada milenaria, ermitas escondidas y amplias vistas de Cataluña. Rutas seleccionadas por locales, exploradas por ti.",
+      subtitle: "Rutas reales, vistas reales: coge una y vete.",
       ctaFindTrail: "Buscar una Ruta",
       ctaCommunityRoutes: "Rutas de la Comunidad",
       featuresCuratedTitle: "Rutas Seleccionadas",
-      featuresCuratedDesc:
-        "Desde la accesible cima de Sant Jeroni hasta los senderos escondidos de Agulles, encuentra rutas clasificadas para todos los niveles.",
+      featuresCuratedDesc: "De paseos fáciles a subidas exigentes: hay para todos los niveles.",
       featuresLocalTitle: "Conocimiento Local",
-      featuresLocalDesc:
-        "Descubre rutas enviadas por la comunidad senderista. Comparte tus propias variantes y rincones secretos.",
+      featuresLocalDesc: "Rutas compartidas por senderistas que las han hecho de verdad.",
       featuresFieldGuideTitle: "Estilo Guía de Campo",
-      featuresFieldGuideDesc:
-        "Datos de rutas claros y legibles, sin distracciones. Pensado para ser tu compañero en la montaña.",
-      ctaReady: "¿Listo para calzarte las botas?",
-      ctaReadySubtitle: "Ya sea que tengas dos horas o un día entero, la montaña te espera.",
+      featuresFieldGuideDesc: "Solo la información que necesitas. Sin ruido.",
+      ctaReady: "¿Preparados para salir?",
+      ctaReadySubtitle: "La montaña te espera.",
       ctaStartExploring: "Empieza a Explorar",
     },
     trailFinder: {
       title: "Buscador de Rutas",
       subtitle:
-        "Descubre rutas seleccionadas por todo Montserrat. Filtra por dificultad, tiempo o terreno para encontrar tu camino perfecto.",
+        "Descubre rutas seleccionadas por Vacarisses y Montserrat. Filtra por dificultad, tiempo o terreno para encontrar tu camino perfecto.",
       filters: "Filtros",
       difficulty: "Dificultad",
       duration: "Duración",
@@ -179,34 +171,30 @@ export const translations = {
       stats: "Estadístiques",
     },
     footer: {
-      tagline: "Una guia de confiança per a la muntanya serrada.",
+      tagline: "Una guia de confiança per fer senderisme per Vacarisses i Montserrat.",
       leaveNoTrace: "Respecta els senders. No deixis rastre.",
     },
     home: {
-      badge: "Una guia de rutes per Montserrat (Vacarisses)",
-      titlePrefix: "Descobreix la màgia de",
+      badge: "Rutes de senderisme per Vacarisses i Montserrat",
+      titlePrefix: "Surt a caminar per",
       titleSuffix: ".",
-      subtitle:
-        "Troba el camí perfecte entre roca conglomerada mil·lenària, ermites amagades i àmplies vistes de Catalunya. Rutes seleccionades per gent local, explorades per tu.",
+      subtitle: "Rutes reals, vistes reals: agafa'n una i vés-hi.",
       ctaFindTrail: "Cerca una Ruta",
       ctaCommunityRoutes: "Rutes de la Comunitat",
       featuresCuratedTitle: "Rutes Seleccionades",
-      featuresCuratedDesc:
-        "Des del cim accessible de Sant Jeroni fins als senders amagats d'Agulles, troba rutes classificades per a tots els nivells.",
+      featuresCuratedDesc: "De passejades fàcils a pujades exigents: n'hi ha per a tots els nivells.",
       featuresLocalTitle: "Coneixement Local",
-      featuresLocalDesc:
-        "Descobreix rutes enviades per la comunitat excursionista. Comparteix les teves pròpies variants i racons secrets.",
+      featuresLocalDesc: "Rutes compartides per excursionistes que les han fet de veritat.",
       featuresFieldGuideTitle: "Estil Guia de Camp",
-      featuresFieldGuideDesc:
-        "Dades de rutes clares i llegibles, sense distraccions. Pensat per ser el teu company a la muntanya.",
-      ctaReady: "Llest per calçar-te les botes?",
-      ctaReadySubtitle: "Tant si tens dues hores com un dia sencer, la muntanya t'espera.",
+      featuresFieldGuideDesc: "Només la informació que necessites. Sense soroll.",
+      ctaReady: "Preparats per sortir?",
+      ctaReadySubtitle: "La muntanya t'espera.",
       ctaStartExploring: "Comença a Explorar",
     },
     trailFinder: {
       title: "Cercador de Rutes",
       subtitle:
-        "Descobreix rutes seleccionades per tot Montserrat. Filtra per dificultat, temps o terreny per trobar el teu camí perfecte.",
+        "Descobreix rutes seleccionades per Vacarisses i Montserrat. Filtra per dificultat, temps o terreny per trobar el teu camí perfecte.",
       filters: "Filtres",
       difficulty: "Dificultat",
       duration: "Durada",
